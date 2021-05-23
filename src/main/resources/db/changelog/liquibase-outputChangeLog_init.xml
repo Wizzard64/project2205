@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="Wizzard (generated)" id="1621271111932-1">
+        <createSequence sequenceName="employee_employee_id_seq"/>
+    </changeSet>
+    <changeSet author="Wizzard (generated)" id="1621271111932-2">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="Wizzard (generated)" id="1621271111932-3">
+        <createTable tableName="employee">
+            <column autoIncrement="true" name="employee_id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="employee_pkey"/>
+            </column>
+            <column name="date_of_birth" type="TIMESTAMP(6) WITHOUT TIME ZONE"/>
+            <column name="departament_id" type="INT"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="gender" type="VARCHAR(255)"/>
+            <column name="job_title" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
