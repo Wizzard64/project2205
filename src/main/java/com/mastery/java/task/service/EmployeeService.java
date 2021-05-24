@@ -22,10 +22,10 @@ public class EmployeeService {
 
     public void save(Employee employee) throws DuplicateEmployeeException, InvalidDateException {
         if (getExistingEmployeeId(employee) != null) {
-            throw new DuplicateEmployeeException(employee, getExistingEmployeeId(employee), "Ошибка: Дублирование пользователя. Пользователь с такими данными существует - id " + getExistingEmployeeId(employee));
+            throw new DuplicateEmployeeException(employee, getExistingEmployeeId(employee), "Error: Duplicate user. A user with such data exists - id " + getExistingEmployeeId(employee));
         } else {
             if (employee.getDateOfBirth().isAfter(LocalDate.now())) {
-                throw new InvalidDateException("Ошибка: Дата из будущего, введите корректную дату");
+                throw new InvalidDateException("Error: Date from the future, enter the correct date");
             } else {
                 employeeDao.save(employee);
             }
@@ -38,7 +38,7 @@ public class EmployeeService {
     }
 
     public Employee getById(int id) {
-        return employeeDao.getOne(id);
+        return employeeDao.findById(id).get();
     }
 
 

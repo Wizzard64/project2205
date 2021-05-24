@@ -38,9 +38,9 @@ public class EmployeeRestController {
         return ResponseEntity.ok(employees);
     }
 
-    @GetMapping("/employeeById")
+    @GetMapping("/employee/{id}")
     @ApiOperation("method to get employee by id")
-    public ResponseEntity<Employee> getEmployeeById(@RequestParam("id") Integer id) {
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Integer id) {
         Employee employee = employeeService.getById(id);
         logCon.info("Employee with ID " + id + " received: " + employee);
         return ResponseEntity.ok(employee);
@@ -59,9 +59,9 @@ public class EmployeeRestController {
         }
     }
 
-    @PutMapping("/employee")
+    @PutMapping("/employee/{id}")
     @ApiOperation("method to update employee")
-    public ResponseEntity<?> updateEmployee(@RequestParam("id") Integer id, @Valid Employee employee, BindingResult bindingResult) {
+    public ResponseEntity<?> updateEmployee(@PathVariable("id") Integer id, @Valid Employee employee, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             logCon.warn("Invalid employee has " + bindingResult.getFieldErrorCount() + " error");
             return ResponseEntity.ok(collectResponseToInvalidRequest(employee, bindingResult));
@@ -72,9 +72,9 @@ public class EmployeeRestController {
         return ResponseEntity.ok(employee);
     }
 
-    @DeleteMapping("/employee")
+    @DeleteMapping("/employee/{id}")
     @ApiOperation("method to delete employee by id")
-    public ResponseEntity<Employee> deleteEmployee(@RequestParam("id") Integer id) {
+    public ResponseEntity<Employee> deleteEmployee(@PathVariable("id") Integer id) {
         Employee employee = employeeService.getById(id);
         this.jmsMessagingTemplate.convertAndSend(this.queue, String.valueOf(id));
         logCon.info("Employee with ID " + id + " deleted");
