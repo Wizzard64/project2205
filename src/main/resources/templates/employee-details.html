@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробнее</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <div class="container" th:object="${employee}">
+        <div class="header__inner">
+            <div class="header__logo">SimpleWebApp</div>
+            <nav class="nav">
+<!--                <a class="nav__link" th:href="'/employees/' + ${employee.employeeId}" th:method="PATCH">Редактировать</a>-->
+
+                <a class="nav__link" href="/employees">Назад на главную</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<div class="detail" th:object="${employee}">
+    <p><b>ID сотрудника: </b><span th:text="${employee.employeeId}"/></p>
+    <p><b>Имя: </b><span th:text="${employee.firstName}"/></p>
+    <p><b>Фамилия: </b><span th:text="${employee.lastName}"/></p>
+    <p><b>Номер департамента: </b><span th:text="${employee.departamentId}"/></p>
+    <p><b>Должность: </b><span th:text="${employee.jobTitle}"/></p>
+    <p><b>Пол: </b> <span th:text="${employee.gender}"/></p>
+    <p><b>Дата рождения: </b><span th:text="${employee.dateOfBirth}"/></p>
+    </form>
+
+    <form th:action="'/employees/' + ${employee.employeeId}" th:method="PATCH">
+        <button class="btn" type="submit">Изменить</button>
+    </form>
+    <form style="margin-top: 20px;" th:action="'/employees/' + ${employee.employeeId}" th:method="DELETE">
+        <button class="btn" type="submit">Удалить</button>
+    </form>
+
+</div>
+</body>
+</html>
