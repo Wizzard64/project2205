@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Подробнее</title>
     <link th:href="@{/styles/style.css}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <header class="header">
@@ -12,8 +13,9 @@
         <div class="header__inner">
             <div class="header__logo">SimpleWebApp</div>
             <nav class="nav">
-                <a class="nav__link" th:href="'/' + ${employee.employeeId} + '/edit'">Редактировать</a>
-                <a class="nav__link" href="/">Назад на главную</a>
+<!--                <a class="nav__link" th:href="'/employees/' + ${employee.employeeId}" th:method="PATCH">Редактировать</a>-->
+
+                <a class="nav__link" href="/employees">Назад на главную</a>
             </nav>
         </div>
     </div>
@@ -28,7 +30,10 @@
     <p><b>Дата рождения: </b><span th:text="${employee.dateOfBirth}"/></p>
     </form>
 
-    <form th:action="'/' + ${employee.employeeId} + '/delete'" method="post">
+    <form th:action="'/employees/' + ${employee.employeeId}" th:method="PATCH">
+        <button class="btn" type="submit">Изменить</button>
+    </form>
+    <form style="margin-top: 20px;" th:action="'/employees/' + ${employee.employeeId}" th:method="DELETE">
         <button class="btn" type="submit">Удалить</button>
     </form>
 

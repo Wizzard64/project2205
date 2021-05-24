@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Добавление</title>
     <link th:href="@{/styles/style.css}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <header class="header">
@@ -12,30 +13,45 @@
         <div class="header__inner">
             <div class="header__logo">SimpleWebApp</div>
             <nav class="nav">
-                <a class="nav__link" href="/">Назад на главную</a>
+                <a class="nav__link" href="/employees">Назад на главную</a>
             </nav>
         </div>
     </div>
 </header>
 <div class="div_input">
-    <form action="/add" method="post" th:object="${employee}">
+    <form action="/employee" method="post" th:object="${employee}">
         <b class="b1">Имя: </b><br>
-        <input th:classappend="${#fields.hasErrors('firstName') ? 'input_text_error' : 'input_text'}" type="text" th:field="*{firstName}" placeholder="Введите имя"><br>
+        <input th:classappend="${#fields.hasErrors('firstName') ? 'input_text_error' : 'input_text'}" type="text"
+               th:field="*{firstName}" placeholder="Введите имя"><br>
         <b class="b1">Фамилия: </b><br>
-        <input th:classappend="${#fields.hasErrors('lastName') ? 'input_text_error' : 'input_text'}" type="text" th:field="*{lastName}" placeholder="Введите фамилию"><br>
+        <input th:classappend="${#fields.hasErrors('lastName') ? 'input_text_error' : 'input_text'}" type="text"
+               th:field="*{lastName}" placeholder="Введите фамилию"><br>
         <b class="b1">Номер департамента: </b><br>
-        <input th:classappend="${#fields.hasErrors('departamentId') ? 'input_number_error' : 'input_number'}" type="number" th:field="*{departamentId}" placeholder="Введите номер департамента"><br>
+        <input th:classappend="${#fields.hasErrors('departamentId') ? 'input_number_error' : 'input_number'}"
+               type="number" th:field="*{departamentId}" placeholder="Введите номер департамента"><br>
         <b class="b1">Должность: </b><br>
-        <input th:classappend="${#fields.hasErrors('jobTitle') ? 'input_text_error' : 'input_text'}" type="text" th:field="*{jobTitle}" placeholder="Введите должность"><br>
+        <input th:classappend="${#fields.hasErrors('jobTitle') ? 'input_text_error' : 'input_text'}" type="text"
+               th:field="*{jobTitle}" placeholder="Введите должность"><br>
         <b class="b1">Пол: </b><br>
-        <label th:classappend="${#fields.hasErrors('gender') ? 'gender_error' : 'gender'}"><input class="input_gender" type="radio" th:field="*{gender}" value="MALE"><div class="stlradio"></div>Male</label>
-        <label th:classappend="${#fields.hasErrors('gender') ? 'gender_error' : 'gender'}"><input class="input_gender" type="radio" th:field="*{gender}" value="FEMALE"><div class="stlradio"></div>Female</label><br>
+        <label th:classappend="${#fields.hasErrors('gender') ? 'gender_error' : 'gender'}"><input class="input_gender"
+                                                                                                  type="radio"
+                                                                                                  th:field="*{gender}"
+                                                                                                  value="MALE">
+            <div class="stlradio"></div>
+            Male</label>
+        <label th:classappend="${#fields.hasErrors('gender') ? 'gender_error' : 'gender'}"><input class="input_gender"
+                                                                                                  type="radio"
+                                                                                                  th:field="*{gender}"
+                                                                                                  value="FEMALE">
+            <div class="stlradio"></div>
+            Female</label><br>
         <b class="b1">Дата рождения: </b><br>
-        <input th:classappend="${#fields.hasErrors('dateOfBirth') ? 'calendar_error' : 'calendar'}" type="date" th:field="*{dateOfBirth}" placeholder="Введите дату рождения"><br>
-        <button class="btn" type="submit" >Добавить</button>
+        <input th:classappend="${#fields.hasErrors('dateOfBirth') ? 'calendar_error' : 'calendar'}" type="date"
+               th:field="*{dateOfBirth}" placeholder="Введите дату рождения"><br>
+        <button class="btn" type="submit">Добавить</button>
     </form>
     <div class="error_text">
-        <span  th:text="${employeeIdExists}"/>
+        <span th:text="${employeeIdExists}"/>
     </div>
 </div>
 

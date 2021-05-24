@@ -12,7 +12,8 @@ import javax.jms.Queue;
 @EnableJms
 public class Simplewebapp {
 
-    public static void main(String[] args){SpringApplication.run(Simplewebapp.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(Simplewebapp.class, args);
     }
 
     @Bean

@@ -1,7 +1,7 @@
 package com.mastery.java.task.exceptions;
 
 
-public class InvalidDateException extends Exception{
+public class InvalidDateException extends Exception {
 
     private final String message;
 

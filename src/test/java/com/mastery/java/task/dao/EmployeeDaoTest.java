@@ -34,15 +34,6 @@ class EmployeeDaoTest {
     private final LocalDate date = LocalDate.of(1989, 02, 02);
 
     @Test
-    public void getEmployeeByEmployeeIdTest() {
-        Employee employee = stubEmployee();
-        entityManager.merge(employee);
-        entityManager.flush();
-        Employee emp = employeeDao.getEmployeeByEmployeeId(employee.getEmployeeId());
-        assertThat(emp.getFirstName()).isEqualTo(employee.getFirstName());
-    }
-
-    @Test
     public void getExistingEmployeeTest() {
         Employee employee = stubEmployee();
         entityManager.merge(employee);

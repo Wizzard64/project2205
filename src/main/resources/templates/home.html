@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Главная страница</title>
     <link th:href="@{/styles/style.css}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <header class="header">
@@ -12,84 +13,98 @@
         <div class="header__inner">
             <div class="header__logo">SimpleWebApp</div>
             <nav class="nav">
-                <a class="nav__link" href="/add">Добавить сотрудника</a>
+                <a class="nav__link" href="/employee">Добавить сотрудника</a>
             </nav>
         </div>
     </div>
 </header>
 <div class="inner">
-<div>
-    <table class="list_log">
-        <tr>
-            <td>Уровень логгирования</td>
-        </tr>
-        <tr>
-            <td align="center" class="log_lvl" th:text="${loglevel}"/>
-        </tr>
-        <tr>
-            <td>Переключить уровень</td>
-        </tr>
-        <tr>
-            <td align="center">
-                <form th:action="@{/lvl/TRACE}" method="post">
-                    <button th:classappend="${loglevel=='TRACE' ? 'btn_deactive' : 'btn'}"
-                            th:disabled="${loglevel=='TRACE'}">TRACE</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
-                <form th:action="@{/lvl/DEBUG}" method="post">
-                    <button th:classappend="${loglevel=='DEBUG' ? 'btn_deactive' : 'btn'}"
-                            th:disabled="${loglevel=='DEBUG'}">DEBUG</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
-                <form th:action="@{/lvl/INFO}" method="post">
-                    <button th:classappend="${loglevel=='INFO' ? 'btn_deactive' : 'btn'}"
-                            th:disabled="${loglevel=='INFO'}">INFO</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
-                <form th:action="@{/lvl/WARN}" method="post">
-                    <button th:classappend="${loglevel=='WARN' ? 'btn_deactive' : 'btn'}"
-                            th:disabled="${loglevel=='WARN'}">WARN</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
-                <form th:action="@{/lvl/ERROR}" method="post">
-                    <button th:classappend="${loglevel=='ERROR' ? 'btn_deactive' : 'btn'}"
-                            th:disabled="${loglevel=='ERROR'}">ERROR</button>
-                </form>
-            </td>
-        </tr>
-    </table>
-</div>
-<div class="container">
-    <table class="list">
-        <tr><th>ID сотрудника</th><th>Имя</th><th>Фамилия</th><th>ID департамента</th><th>Должность</th><th>Пол</th><th>Дата рождения</th><th></th></tr>
-        <tr th:each="el:${employees}">
-            <td th:text="${el.employeeId}"/>
-            <td th:text="${el.firstName}"/>
-            <td th:text="${el.lastName}"/>
-            <td th:text="${el.departamentId}"/>
-            <td th:text="${el.jobTitle}"/>
-            <td th:text="${el.gender}"/>
-            <td th:text="${el.dateOfBirth}"/>
-            <td>
-                <form th:action="'/get/' + ${el.employeeId}">
-                    <button class="btn">Подробнее</button>
-                </form>
-            </td>
-        </tr>
-    </table>
-</div>
+    <div>
+        <table class="list_log">
+            <tr>
+                <td>Уровень логгирования</td>
+            </tr>
+            <tr>
+                <td align="center" class="log_lvl" th:text="${loglevel}"/>
+            </tr>
+            <tr>
+                <td>Переключить уровень</td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form th:action="@{/lvl/TRACE}" method="post">
+                        <button th:classappend="${loglevel=='TRACE' ? 'btn_deactive' : 'btn'}"
+                                th:disabled="${loglevel=='TRACE'}">TRACE
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form th:action="@{/lvl/DEBUG}" method="post">
+                        <button th:classappend="${loglevel=='DEBUG' ? 'btn_deactive' : 'btn'}"
+                                th:disabled="${loglevel=='DEBUG'}">DEBUG
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form th:action="@{/lvl/INFO}" method="post">
+                        <button th:classappend="${loglevel=='INFO' ? 'btn_deactive' : 'btn'}"
+                                th:disabled="${loglevel=='INFO'}">INFO
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form th:action="@{/lvl/WARN}" method="post">
+                        <button th:classappend="${loglevel=='WARN' ? 'btn_deactive' : 'btn'}"
+                                th:disabled="${loglevel=='WARN'}">WARN
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <form th:action="@{/lvl/ERROR}" method="post">
+                        <button th:classappend="${loglevel=='ERROR' ? 'btn_deactive' : 'btn'}"
+                                th:disabled="${loglevel=='ERROR'}">ERROR
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <table class="list">
+            <tr>
+                <th>ID сотрудника</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>ID департамента</th>
+                <th>Должность</th>
+                <th>Пол</th>
+                <th>Дата рождения</th>
+                <th></th>
+            </tr>
+            <tr th:each="el:${employees}">
+                <td th:text="${el.employeeId}"/>
+                <td th:text="${el.firstName}"/>
+                <td th:text="${el.lastName}"/>
+                <td th:text="${el.departamentId}"/>
+                <td th:text="${el.jobTitle}"/>
+                <td th:text="${el.gender}"/>
+                <td th:text="${el.dateOfBirth}"/>
+                <td>
+                    <form th:action="'/employees/' + ${el.employeeId}">
+                        <button class="btn">Подробнее</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>

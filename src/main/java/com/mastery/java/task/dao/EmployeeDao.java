@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Repository
 public interface EmployeeDao extends JpaRepository<Employee, Integer> {
 
-    public Employee getEmployeeByEmployeeId(int employeeId);
 
     @Query(value = "SELECT employee_id FROM employee WHERE first_name = :firstName AND last_name = :lastName AND departament_id = :departamentId " +
             "AND job_title = :jobTitle AND gender = :gender AND date_of_birth = :dateOfBirth", nativeQuery = true)

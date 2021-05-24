@@ -2,7 +2,7 @@ package com.mastery.java.task.exceptions;
 
 import com.mastery.java.task.dto.Employee;
 
-public class DuplicateEmployeeException extends Exception{
+public class DuplicateEmployeeException extends Exception {
 
     private final Integer existsEmployeeId;
 
